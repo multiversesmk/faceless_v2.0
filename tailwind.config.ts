@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -22,6 +25,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -47,23 +51,49 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        // Chat-specific surfaces
+        'server-bg': "hsl(var(--server-bg))",
+        'channel-bg': "hsl(var(--channel-bg))",
+        'chat-bg': "hsl(var(--chat-bg))",
+        'message-hover': "hsl(var(--message-hover))",
+        'active-channel': "hsl(var(--active-channel))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'glow': 'var(--glow-primary)',
+        'glow-subtle': 'var(--glow-subtle)',
+      },
+      animation: {
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+        'glitch': 'glitch 0.3s ease-in-out',
+        'scan-line': 'scan-line 2s linear infinite',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       keyframes: {
+        'pulse-glow': {
+          '0%': {
+            boxShadow: '0 0 5px hsla(168, 100%, 43.3%, 0.3)',
+          },
+          '100%': {
+            boxShadow: '0 0 20px hsla(168, 100%, 43.3%, 0.6), 0 0 30px hsla(168, 100%, 43.3%, 0.4)',
+          }
+        },
+        'glitch': {
+          '0%, 100%': { transform: 'translate(0)' },
+          '20%': { transform: 'translate(-2px, 2px)' },
+          '40%': { transform: 'translate(-2px, -2px)' },
+          '60%': { transform: 'translate(2px, 2px)' },
+          '80%': { transform: 'translate(2px, -2px)' }
+        },
+        'scan-line': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100vh)' }
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -80,10 +110,6 @@ export default {
             height: "0",
           },
         },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
