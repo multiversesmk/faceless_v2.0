@@ -93,32 +93,30 @@ const ServerDiscovery = () => {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <div className="border-b border-border bg-card">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Button 
-                variant="ghost" 
-                onClick={() => navigate('/')}
-                className="p-2"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </Button>
-              <div>
-                <h1 className="text-2xl font-bold text-foreground">
-                  Explore Public Squares
-                </h1>
-                <p className="text-muted-foreground">
-                  Discover anonymous communities and join the conversation
-                </p>
-              </div>
+        <div className="container mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-start sm:items-center space-x-3 sm:space-x-4">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="p-2 flex-shrink-0 mt-1 sm:mt-0"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </Button>
+            <div className="min-w-0 flex-1">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground">
+                Explore Public Squares
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground mt-1">
+                Discover anonymous communities and join the conversation
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Search Bar */}
-      <div className="container mx-auto px-6 py-6">
-        <div className="relative max-w-md">
+      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
+        <div className="relative max-w-full sm:max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             placeholder="Find a community..."
@@ -130,33 +128,33 @@ const ServerDiscovery = () => {
       </div>
 
       {/* Server Grid */}
-      <div className="container mx-auto px-6 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="container mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredServers.map((server) => (
             <Card key={server.id} className="bg-card border-border hover:border-primary/50 transition-colors">
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="text-2xl">{server.icon}</div>
-                    <div>
-                      <CardTitle className="text-lg text-foreground">
+                  <div className="flex items-start space-x-3 min-w-0 flex-1">
+                    <div className="text-xl sm:text-2xl flex-shrink-0">{server.icon}</div>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-base sm:text-lg text-foreground truncate">
                         {server.name}
                       </CardTitle>
                       <div className="flex items-center space-x-2 mt-1">
-                        <div className="flex items-center text-muted-foreground text-sm">
-                          <Users className="w-3 h-3 mr-1" />
-                          {server.playerCount}/{server.maxPlayers}
+                        <div className="flex items-center text-muted-foreground text-xs sm:text-sm">
+                          <Users className="w-3 h-3 mr-1 flex-shrink-0" />
+                          <span className="truncate">{server.playerCount}/{server.maxPlayers}</span>
                         </div>
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse flex-shrink-0" />
                       </div>
                     </div>
                   </div>
-                  <Globe className="w-4 h-4 text-muted-foreground" />
+                  <Globe className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-2" />
                 </div>
               </CardHeader>
               
-              <CardContent className="space-y-4">
-                <CardDescription className="text-muted-foreground">
+              <CardContent className="space-y-3 sm:space-y-4">
+                <CardDescription className="text-muted-foreground text-sm leading-relaxed">
                   {server.description}
                 </CardDescription>
                 
@@ -175,7 +173,8 @@ const ServerDiscovery = () => {
                 <Button 
                   onClick={() => handleJoinServer(server.id)}
                   variant="primary"
-                  className="w-full"
+                  className="w-full touch-manipulation"
+                  size="sm"
                 >
                   Join Square
                 </Button>
@@ -185,12 +184,12 @@ const ServerDiscovery = () => {
         </div>
 
         {filteredServers.length === 0 && (
-          <div className="text-center py-12">
-            <Globe className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">
+          <div className="text-center py-8 sm:py-12 px-4">
+            <Globe className="w-10 h-10 sm:w-12 sm:h-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-base sm:text-lg font-medium text-foreground mb-2">
               No communities found
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Try adjusting your search terms or explore different topics.
             </p>
           </div>

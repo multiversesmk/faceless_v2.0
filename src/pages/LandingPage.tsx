@@ -17,50 +17,50 @@ const LandingPage = () => {
         <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-scan-line" />
       </div>
       
-      <div className="text-center space-y-8 max-w-md mx-auto px-6">
+      <div className="text-center space-y-6 md:space-y-8 max-w-lg mx-auto px-4 sm:px-6">
         {/* Title with glitch effect on hover */}
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           <h1 
-            className="text-6xl font-bold tracking-wider text-foreground hover:animate-glitch cursor-default select-none"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wider text-foreground hover:animate-glitch cursor-default select-none"
             style={{ fontWeight: 800 }}
           >
             FACELESS
           </h1>
-          <p className="text-xl text-muted-foreground font-light">
+          <p className="text-lg sm:text-xl text-muted-foreground font-light px-4">
             No names. No faces. Just conversation.
           </p>
         </div>
 
         {/* Button Group */}
-        <div className="flex gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
           <Button 
             variant="primary"
             size="lg" 
             onClick={() => setShowJoinModal(true)}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 w-full sm:w-auto"
           >
-            <Swords className="w-5 h-5" />
-            Enter the Game
+            <Swords className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Enter the Game</span>
           </Button>
           
           <Button 
             variant="secondary"
             size="lg" 
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 w-full sm:w-auto"
           >
-            <PlusSquare className="w-5 h-5" />
-            Create a Room
+            <PlusSquare className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Create a Room</span>
           </Button>
         </div>
 
         {/* Tertiary Link */}
         <button
           onClick={() => navigate('/discover')}
-          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mx-auto"
+          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mx-auto touch-manipulation"
         >
           <Compass className="w-4 h-4" />
-          Explore Public Squares
+          <span className="text-sm sm:text-base">Explore Public Squares</span>
         </button>
       </div>
 
